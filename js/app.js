@@ -1,7 +1,8 @@
 
 (function(){
 
-    var app = angular.module("provaAngularjs",[]);
+
+    var app = angular.module("negozioApp",[]);
 
     app.controller(
         "negozioController",
@@ -14,20 +15,30 @@
         {
             marca : "Lamborghini",
             nome : "Gallardo",
-            prezzo : 350,
-            colore : "gialla",
+            prezzo : 350000,
+            colore : "giallo",
             canPurchase : true,
             isSoldOut : false
         },
         {
             marca : "Ferrari",
             nome : "Enzo",
-            prezzo : 230,
-            colore : "rossa",
+            prezzo : 230000,
+            colore : "rosso",
+            canPurchase : true,
+            isSoldOut : false
+        },
+        {
+            marca : "Fiat",
+            nome : "500",
+            prezzo : 30000,
+            colore : "bianco",
             canPurchase : true,
             isSoldOut : false
         }
     ];
+
+
 })();
 
 

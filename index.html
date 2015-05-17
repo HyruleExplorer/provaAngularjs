@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="provaAngularjs">
+<html ng-app="negozioApp">
 
 <head>
     <meta charset="utf-8">
@@ -16,17 +16,19 @@
         Prodotti disponibili:
     </h2>
 
-    <div id="lista-prodotti" ng-repeat="prodotto in negozio.prodotti">
-        <div ng-hide="prodotto.isSoldOut" class="prodotto">
+    <div id="lista-prodotti">
+        <div  ng-repeat=" prodotto in negozio.prodotti | orderBy:'-prezzo' "
+              ng-hide="prodotto.isSoldOut"
+              class="prodotto">
             <h3 class="marca-prodotto">
                 {{prodotto.marca}}
             </h3>
             <p class="descrizione-prodotto">
                 Modello: <b>{{prodotto.nome}}</b>
                 <br/>
-                Colore: <b>{{prodotto.colore}}</b>
+                Colore: <b>{{prodotto.colore | uppercase}}</b>
                 <br/>
-                Prezzo: <b>${{prodotto.prezzo}}.000</b>
+                Prezzo: <b>{{prodotto.prezzo | currency:"€ "}}</b>
             </p>
             <button ng-show="prodotto.canPurchase" class="pulsante-acquista">
                 Acquista
