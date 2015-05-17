@@ -1,15 +1,8 @@
+/*jslint plusplus: true, sloppy: true, vars: true*/
 
-(function(){
+(function () {
 
-
-    var app = angular.module("negozioApp",[]);
-
-    app.controller(
-        "negozioController",
-        function(){
-            this.prodotti = macchine;
-        }
-    )
+    var app = angular.module("negozioApp", []);
 
     var macchine = [
         {
@@ -38,7 +31,14 @@
         }
     ];
 
+    app.controller(
+        "negozioController",
+        function () {
+            this.prodotti = macchine;
+        }
+    );
 
-})();
+
+}());
 
 
