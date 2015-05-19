@@ -53,3 +53,23 @@ body {
     position: relative;
     top: -20px;
 }
+
+.ng-invalid.ng-pristine {
+    border-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+.ng-valid.ng-pristine {
+    border-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+.ng-invalid.ng-dirty {
+    border-color: red;
+    border-radius: 5px;
+}
+
+.ng-valid.ng-dirty {
+    border-color: lightgreen;
+    border-radius: 5px;
+}

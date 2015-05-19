@@ -2,7 +2,13 @@
 
 (function () {
 
+    //Main App
     var app = angular.module("negozioApp", []);
+
+
+    /*-----------------------------*/
+    /*-----------------------------*/
+    //Controllers
 
     app.controller(
         "negozioController",
@@ -24,17 +30,79 @@
         }
     );
 
-    app.controller(
-        "reviewController",
+    /*-----------------------------*/
+    /*-----------------------------*/
+
+
+
+    /*-----------------------------*/
+    /*-----------------------------*/
+    //Custom Directives
+
+    app.directive(
+        "prodottoHeader",
         function () {
-            this.review = {};
-            this.addReview = function (product) {
-                product.recensioni.push(this.review);
-                this.review = {};
+            return {
+                restrict: 'E',
+                templateUrl: './prodotto_header.html'
             };
         }
     );
 
+    app.directive(
+        "navMenu",
+        function () {
+            return {
+                restrict: 'E',
+                templateUrl: './nav_menu.html'
+            };
+        }
+    );
+
+    app.directive(
+        "prodottoBody",
+        function () {
+            return {
+                restrict: 'E',
+                templateUrl: './prodotto_body.html'
+            };
+        }
+    );
+
+    app.directive(
+        "recensioni",
+        function () {
+            return {
+                restrict: 'E',
+                templateUrl: './templates/recensioni.html'
+            };
+        }
+    );
+
+    app.directive(
+        "nuovaRecensione",
+        function () {
+            return {
+                restrict: 'E',
+                templateUrl: './templates/nuova_recensione.html',
+                controller: function () {
+                    this.review = {};
+                    this.addReview = function (product, form) {
+                        product.recensioni.push(this.review);
+                        this.review = {};
+                        form.$setPristine(true);
+                    };
+                },
+                controllerAs: 'reviewCtrl'
+            };
+        }
+    );
+
+    /*-----------------------------*/
+    /*-----------------------------*/
+
+
+    //Dati della app
     var macchine = [
         {
             marca: "Lamborghini",

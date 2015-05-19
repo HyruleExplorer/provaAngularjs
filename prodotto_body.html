@@ -1,0 +1,22 @@
+<section ng-show="navigatore.isSelected(1)" class="descrizione-prodotto">
+    <h3>Descrizione prodotto</h3>
+    <b>{{prodotto.descrizione}}</b>
+</section>
+
+<section ng-show="navigatore.isSelected(2)" class="colore-prodotto">
+    <h3>Colore del prodotto</h3>
+    <b>{{prodotto.colore | uppercase}}</b>
+</section>
+
+<section ng-show="navigatore.isSelected(3)" class="prezzo-prodotto">
+    <h3>Prezzo d'acquisto</h3>
+    <b>{{prodotto.prezzo | currency:"€ "}}</b>
+</section>
+
+<section ng-show="navigatore.isSelected(4)" class="recensioni-prodotto">
+    <h3>Recensioni degli utenti</h3>
+    <recensioni></recensioni>
+
+    <h4>Aggiungi una recensione:</h4>
+    <nuova-recensione></nuova-recensione>
+</section>

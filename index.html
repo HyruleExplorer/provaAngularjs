@@ -12,136 +12,24 @@
 
     <script src="js/angular.min.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/prodotti.js" type="text/javascript"></script>
 </head>
 
+
 <body ng-controller="negozioController as negozio">
+
     <div id="container">
 
-        <h2 class="header">
-            Prodotti disponibili:
-        </h2>
-
         <div id="lista-prodotti">
+            <h1 class="header">
+                Prodotti disponibili:
+            </h1>
             <div ng-repeat=" prodotto in negozio.prodotti | orderBy:'-prezzo' " ng-hide="prodotto.isSoldOut" class="prodotto">
-
-                <h2 class="marca-prodotto">
-                    {{prodotto.marca}}
-                </h2>
-                <h3 class="modello-prodotto">
-                    <b>{{prodotto.modello}}</b>
-                </h3>
-
                 <section ng-controller="navigatorController as navigatore" class="navigatore">
-
-                    <section>
-                        <a href="{{prodotto.images[0].full}}">
-                            <img ng-src="{{prodotto.images[0].thumb}}" />
-                        </a>
-                        <br/>
-                        <br/>
-                        <button ng-show="prodotto.canPurchase" class="pulsante-acquista">
-                            Acquista
-                        </button>
-                    </section>
-
-                    <br/>
-
-                    <section>
-                        <ul class="nav nav-pills">
-                            <li ng-class="{ active : navigatore.isSelected(1) }">
-                                <a href ng-click="navigatore.selectTab(1)">
-                                Descrizione
-                            </a>
-                            </li>
-                            <li ng-class="{ active : navigatore.isSelected(2) }">
-                                <a href ng-click="navigatore.selectTab(2)">
-                                Colore
-                            </a>
-                            </li>
-                            <li ng-class="{ active : navigatore.isSelected(3) }">
-                                <a href ng-click="navigatore.selectTab(3)">
-                                Prezzo
-                            </a>
-                            </li>
-                            <li ng-class="{ active : navigatore.isSelected(4) }">
-                                <a href ng-click="navigatore.selectTab(4)">
-                                Recensioni
-                            </a>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <br/>
-
-                    <section ng-show="navigatore.isSelected(1)" class="descrizione-prodotto">
-                        <h3>Descrizione prodotto</h3>
-                        <b>{{prodotto.descrizione}}</b>
-                    </section>
-
-                    <section ng-show="navigatore.isSelected(2)" class="colore-prodotto">
-                        <h3>Colore del prodotto</h3>
-                        <b>{{prodotto.colore | uppercase}}</b>
-                    </section>
-
-                    <section ng-show="navigatore.isSelected(3)" class="prezzo-prodotto">
-                        <h3>Prezzo d'acquisto</h3>
-                        <b>{{prodotto.prezzo | currency:"€ "}}</b>
-                    </section>
-
-                    <section ng-show="navigatore.isSelected(4)" class="recensioni-prodotto">
-                        <h3>Recensioni degli utenti</h3>
-                        <hr/>
-
-                        <article ng-repeat="recensione in prodotto.recensioni">
-                            <h4>- Voto: {{recensione.voto}} / 10</h4>
-                            <br/>
-                            <span>{{recensione.commento}}</span>
-                            <br/>
-                            <br/>
-                            <cite>{{recensione.autore}}</cite>
-                            <hr/>
-                        </article>
-
-                        <article ng-controller="reviewController as reviewCtrl">
-
-                            <section ng-show="reviewCtrl.review.commento">
-                                <h4><b>Preview nuovo commento</b></h4>
-                                <h4>- Voto: {{reviewCtrl.review.voto}} / 10</h4>
-                                <br/>
-                                <span>{{reviewCtrl.review.commento}}</span>
-                                <br/>
-                                <br/>
-                                <cite>{{reviewCtrl.review.autore}}</cite>
-                                <hr/>
-                            </section>
-
-                            <section>
-                                <h4>Aggiungi una recensione:</h4>
-                                <form name="reviewForm" ng-submit="reviewCtrl.addReview(prodotto)">
-                                    <b>Voto: </b>
-                                    <br/>
-                                    <input ng-model="reviewCtrl.review.voto" type="number" max="10" min="0" placeholder="0" required>/10
-                                    <br/>
-
-                                    <b>Commento:</b>
-                                    <br/>
-                                    <textarea ng-model="reviewCtrl.review.commento" cols="55" rows="5" placeholder="Scrivi una breve recensione" required></textarea>
-                                    <br/>
-
-                                    <b>Email:</b>
-                                    <br/>
-                                    <input ng-model="reviewCtrl.review.autore" type="email" placeholder="La tua email" required>
-                                    <br/>
-                                    <input type="submit" value="Invia Recensione">
-                                </form>
-                            </section>
-
-                        </article>
-
-                    </section>
-
+                    <prodotto-header></prodotto-header>
+                    <nav-menu></nav-menu>
+                    <prodotto-body></prodotto-body>
                 </section>
-
             </div>
         </div>
 

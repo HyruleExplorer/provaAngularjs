@@ -1,0 +1,19 @@
+<section>
+    <h2 class="marca-prodotto">
+        {{prodotto.marca}}
+    </h2>
+    <h3 class="modello-prodotto">
+        <b>{{prodotto.modello}}</b>
+    </h3>
+
+    <a href="{{prodotto.images[0].full}}">
+        <img ng-src="{{prodotto.images[0].thumb}}" />
+    </a>
+    <br/>
+    <br/>
+    <button ng-show="prodotto.canPurchase" class="pulsante-acquista">
+        Acquista
+    </button>
+</section>
+<br/>
+<br/>
