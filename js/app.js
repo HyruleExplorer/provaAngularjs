@@ -3,12 +3,7 @@
 (function () {
 
     //Main App
-    var app = angular.module("negozioApp", []);
-
-
-    /*-----------------------------*/
-    /*-----------------------------*/
-    //Controllers
+    var app = angular.module("negozioApp", ['prodottiApp', 'recensioniApp', 'navigatorApp']);
 
     app.controller(
         "negozioController",
@@ -17,92 +12,9 @@
         }
     );
 
-    app.controller(
-        "navigatorController",
-        function () {
-            this.tab = 1;
-            this.selectTab = function (setTab) {
-                this.tab = setTab;
-            };
-            this.isSelected = function (checkTab) {
-                return (this.tab === checkTab);
-            };
-        }
-    );
-
-    /*-----------------------------*/
-    /*-----------------------------*/
 
 
-
-    /*-----------------------------*/
-    /*-----------------------------*/
-    //Custom Directives
-
-    app.directive(
-        "prodottoHeader",
-        function () {
-            return {
-                restrict: 'E',
-                templateUrl: './prodotto_header.html'
-            };
-        }
-    );
-
-    app.directive(
-        "navMenu",
-        function () {
-            return {
-                restrict: 'E',
-                templateUrl: './nav_menu.html'
-            };
-        }
-    );
-
-    app.directive(
-        "prodottoBody",
-        function () {
-            return {
-                restrict: 'E',
-                templateUrl: './prodotto_body.html'
-            };
-        }
-    );
-
-    app.directive(
-        "recensioni",
-        function () {
-            return {
-                restrict: 'E',
-                templateUrl: './templates/recensioni.html'
-            };
-        }
-    );
-
-    app.directive(
-        "nuovaRecensione",
-        function () {
-            return {
-                restrict: 'E',
-                templateUrl: './templates/nuova_recensione.html',
-                controller: function () {
-                    this.review = {};
-                    this.addReview = function (product, form) {
-                        product.recensioni.push(this.review);
-                        this.review = {};
-                        form.$setPristine(true);
-                    };
-                },
-                controllerAs: 'reviewCtrl'
-            };
-        }
-    );
-
-    /*-----------------------------*/
-    /*-----------------------------*/
-
-
-    //Dati della app
+    //Dati
     var macchine = [
         {
             marca: "Lamborghini",
